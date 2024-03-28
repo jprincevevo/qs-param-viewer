@@ -23,37 +23,43 @@ const ParamKeyList = ({ paramKeyData, onChange }: Props) => {
 
   return (
     <Paper elevation={4}>
-      <TableContainer component={Paper}>
-        <Table aria-label="param key data table">
-          <TableHead>
-            <TableRow>
-              <TableCell sx={{ pl: 3 }}>Key</TableCell>
-              <TableCell align="left">Prioritize key?</TableCell>
-            </TableRow>
-          </TableHead>
-
-          <TableBody>
-            {Object.values(paramKeyData).map((row) => (
-              <TableRow
-                key={row.name}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 }}}
-              >
-                <TableCell component="th" scope="row" sx={{ pl: 3 }}>
-                  {row.name}
-                </TableCell>
-                <TableCell align="left">
-                  <Checkbox
-                    name={row.name}
-                    checked={row.isFocused}
-                    inputProps={{ "aria-label": "controlled" }}
-                    onChange={handleCheckboxChange}
-                  />
-                </TableCell>
+      {Object.keys(paramKeyData).length === 0 ? (
+        <Paper elevation={4} sx={{ p: 2 }}>
+          <p>No param keys to display</p>
+        </Paper>
+      ) : (
+        <TableContainer component={Paper}>
+          <Table aria-label="param key data table">
+            <TableHead>
+              <TableRow>
+                <TableCell sx={{ pl: 3 }}>Key</TableCell>
+                <TableCell align="left">Prioritize key?</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+
+            <TableBody>
+              {Object.values(paramKeyData).map((row) => (
+                <TableRow
+                  key={row.name}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row" sx={{ pl: 3 }}>
+                    {row.name}
+                  </TableCell>
+                  <TableCell align="left">
+                    <Checkbox
+                      name={row.name}
+                      checked={row.isFocused}
+                      inputProps={{ "aria-label": "controlled" }}
+                      onChange={handleCheckboxChange}
+                    />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
     </Paper>
   );
 };

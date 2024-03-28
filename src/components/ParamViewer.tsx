@@ -36,6 +36,15 @@ const ParamViewer: React.FC<ParamViewerProps> = ({ params, settings }) => {
     {}
   );
 
+  if (focusedParamKeys.length === 0 && Object.keys(params).length === 0) {
+    return (
+      <Paper elevation={4} sx={{ p: 2 }}>
+        <h2>Params</h2>
+        <p>No params to display</p>
+      </Paper>
+    );
+  }
+
   return (
     <Paper elevation={4} sx={{ p: 2 }}>
       <h2>Params</h2>
