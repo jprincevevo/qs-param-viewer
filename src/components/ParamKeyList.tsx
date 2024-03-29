@@ -32,7 +32,7 @@ const ParamKeyList = ({ paramKeyData, onChange }: Props) => {
           No saved param keys to display
         </Typography>
       ) : (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} sx={{ maxHeight: "70vh", overflowY: "scroll" }}>
           <Table size="small" aria-label="param key data table">
             <TableHead>
               <TableRow>

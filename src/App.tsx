@@ -73,25 +73,24 @@ function App() {
 
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
-            <Grid xs={7}>
+            <Grid xs={8}>
               <ParamViewer params={params} settings={paramKeySettings} />
+              <Box sx={{ flexGrow: 1, mt: 4 }}>
+                <ParamStringHistory
+                  paramStrings={paramStringEntries}
+                  onClick={handleParamStringHistoryClick}
+                  currentParamStringEntry={currentParamStringEntry}
+                />
+              </Box>
             </Grid>
 
-            <Grid xs={5}>
+            <Grid xs={4}>
               <ParamKeyList
                 paramKeyData={paramKeySettings}
                 onChange={handleParamKeySettingChange}
               />
             </Grid>
           </Grid>
-        </Box>
-
-        <Box sx={{ flexGrow: 1, mt: 4 }}>
-          <ParamStringHistory
-            paramStrings={paramStringEntries}
-            onClick={handleParamStringHistoryClick}
-            currentParamStringEntry={currentParamStringEntry}
-          />
         </Box>
       </Container>
     </>

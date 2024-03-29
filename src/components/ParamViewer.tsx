@@ -54,7 +54,7 @@ const ParamViewer: React.FC<ParamViewerProps> = ({ params, settings }) => {
             <TableHead>
               <TableRow>
                 <TableCell sx={{ pl: 3 }}>Key</TableCell>
-                <TableCell align="left">Value</TableCell>
+                <TableCell>Value</TableCell>
               </TableRow>
             </TableHead>
 
@@ -65,10 +65,10 @@ const ParamViewer: React.FC<ParamViewerProps> = ({ params, settings }) => {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   style={{ backgroundColor: "rgba(85, 108, 214, 0.075)", borderBottom: "1.5px solid #bbb"}}
                 >
-                  <TableCell component="th" scope="row" sx={{ pl: 3 }}>
+                  <TableCell component="th" sx={{ pl: 3, minWidth: "200px" }}>
                     <strong>{key}</strong>
                   </TableCell>
-                  <TableCell align="left">
+                  <TableCell>
                     <strong>{value ?? "–"}</strong>
                   </TableCell>
                 </TableRow>
