@@ -86,7 +86,7 @@ function App() {
           </Grid>
         </Box>
 
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1, mt: 4 }}>
           <ParamStringHistory
             paramStrings={paramStringEntries}
             onClick={handleParamStringHistoryClick}

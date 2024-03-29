@@ -5,6 +5,7 @@ import {
   TableCell,
   TableContainer,
   TableRow,
+  Typography,
 } from "@mui/material";
 import React from "react";
 
@@ -24,12 +25,14 @@ const ParamStringHistory: React.FC<Props> = ({
   };
 
   return (
-    <div>
-      <h2>History</h2>
+    <Paper elevation={4} sx={{ p: 2, mb: 8 }}>
+      <Typography variant="h5" gutterBottom>
+        History
+      </Typography>
 
       {paramStrings.length === 0 ? (
         <Paper elevation={4} sx={{ p: 2 }}>
-          <p>No params to display</p>
+          <p>No query strings to display</p>
         </Paper>
       ) : (
         <TableContainer component={Paper}>
@@ -58,7 +61,7 @@ const ParamStringHistory: React.FC<Props> = ({
           </Table>
         </TableContainer>
       )}
-    </div>
+    </Paper>
   );
 };
 

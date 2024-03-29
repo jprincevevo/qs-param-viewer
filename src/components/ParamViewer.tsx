@@ -8,6 +8,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Typography,
 } from "@mui/material";
 
 interface ParamViewerProps {
@@ -36,56 +37,58 @@ const ParamViewer: React.FC<ParamViewerProps> = ({ params, settings }) => {
     {}
   );
 
-  if (focusedParamKeys.length === 0 && Object.keys(params).length === 0) {
-    return (
-      <Paper elevation={4} sx={{ p: 2 }}>
-        <h2>Params</h2>
-        <p>No params to display</p>
-      </Paper>
-    );
-  }
+  const hasParamsToDisplay =
+    focusedParamKeys.length > 0 || Object.keys(params).length > 0;
 
   return (
     <Paper elevation={4} sx={{ p: 2 }}>
-      <h2>Params</h2>
+      <Typography variant="h5" gutterBottom>
+        Params
+      </Typography>
 
-      <TableContainer component={Paper}>
-        <Table aria-label="param key data table">
-          <TableHead>
-            <TableRow>
-              <TableCell sx={{ pl: 3 }}>Key</TableCell>
-              <TableCell align="left">Value</TableCell>
-            </TableRow>
-          </TableHead>
-
-          <TableBody>
-            {Object.entries(focusedParams).map(([key, value]) => (
-              <TableRow
-                key={key}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                style={{ backgroundColor: "#ddd" }}
-              >
-                <TableCell component="th" scope="row" sx={{ pl: 3 }}>
-                  <strong>{key}</strong>
-                </TableCell>
-                <TableCell align="left"><strong>{value ?? "N/A"}</strong></TableCell>
+      {!hasParamsToDisplay ? (
+        <p>No params to display</p>
+      ) : (
+        <TableContainer component={Paper}>
+          <Table size="small" aria-label="param key data table">
+            <TableHead>
+              <TableRow>
+                <TableCell sx={{ pl: 3 }}>Key</TableCell>
+                <TableCell align="left">Value</TableCell>
               </TableRow>
-            ))}
+            </TableHead>
 
-            {Object.entries(unfocusedParams).map(([key, value]) => (
-              <TableRow
-                key={key}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row" sx={{ pl: 3 }}>
-                  {key}
-                </TableCell>
-                <TableCell align="left">{value}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            <TableBody>
+              {Object.entries(focusedParams).map(([key, value]) => (
+                <TableRow
+                  key={key}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  style={{ backgroundColor: "rgba(85, 108, 214, 0.075)", borderBottom: "1.5px solid #bbb"}}
+                >
+                  <TableCell component="th" scope="row" sx={{ pl: 3 }}>
+                    <strong>{key}</strong>
+                  </TableCell>
+                  <TableCell align="left">
+                    <strong>{value ?? "–"}</strong>
+                  </TableCell>
+                </TableRow>
+              ))}
+
+              {Object.entries(unfocusedParams).map(([key, value]) => (
+                <TableRow
+                  key={key}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row" sx={{ pl: 3 }}>
+                    {key}
+                  </TableCell>
+                  <TableCell align="left">{value}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
     </Paper>
   );
 };

@@ -1,4 +1,4 @@
-import { Checkbox } from "@mui/material";
+import { Checkbox, Typography } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -22,14 +22,18 @@ const ParamKeyList = ({ paramKeyData, onChange }: Props) => {
   };
 
   return (
-    <Paper elevation={4}>
+    <Paper elevation={4} sx={{ p: 2 }}>
+      <Typography variant="h5" gutterBottom>
+        Keys
+      </Typography>
+
       {Object.keys(paramKeyData).length === 0 ? (
-        <Paper elevation={4} sx={{ p: 2 }}>
-          <p>No param keys to display</p>
-        </Paper>
+        <Typography variant="body1" gutterBottom>
+          No saved param keys to display
+        </Typography>
       ) : (
         <TableContainer component={Paper}>
-          <Table aria-label="param key data table">
+          <Table size="small" aria-label="param key data table">
             <TableHead>
               <TableRow>
                 <TableCell sx={{ pl: 3 }}>Key</TableCell>

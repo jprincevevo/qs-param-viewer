@@ -29,7 +29,7 @@ const ParamStringInput = ({ onSubmit }: Props) => {
             <Grid item xs={11}>
               <TextField
                 id="qs-param-string"
-                label="QS param string or URL"
+                label="URL or just the query string"
                 variant="outlined"
                 sx={{ width: "100%" }}
                 value={value}
